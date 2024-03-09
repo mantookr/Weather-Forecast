@@ -11,12 +11,9 @@ public class WeatherConnector {
 
     public ForeCastResponse fetchWeatherData(String zipcode) {
         try {
-            String apiUrl = WEATHER_API_URL + "?zip=" + zipcode + ",us&appid=" + WEATHER_API_KEY + "&units=imperial";
+            String apiUrl = WEATHER_API_URL + "?zip=" + zipcode + ",us&appid=" + WEATHER_API_KEY;
             // Make HTTP request to weather API and return response as string
-            // Implement your HTTP request logic here (e.g., using HttpClient)
-            // For simplicity, let's assume the response is a JSON string
-            // Here you would make an HTTP GET request to apiUrl and fetch the weather data
-            // For demonstration purposes, let's simulate a response
+            
             return ForeCastResponse.builder().currentTemperature(72.5)
                     .highTemperature(75.0)
                     .lowTemperature(70.0)
