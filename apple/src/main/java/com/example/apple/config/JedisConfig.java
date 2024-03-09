@@ -6,11 +6,16 @@ import redis.clients.jedis.JedisPoolConfig;
 
 @Component
 public class JedisConfig {
-    public static JedisPool obj = null;
+    private static volatile JedisPool obj = null;
     public static JedisPool getJedisInstance() {
-        if(null != null) {
-            return obj;
+        if(null == obj) {
+            synchronized(JedisConfig.class) {
+                if(null == obj) {
+                    obj = new JedisPool(new JedisPoolConfig(), "localhost");
+                }
+            }
+            
         }
-       return obj = new JedisPool(new JedisPoolConfig(), "localhost");
+       return obj; 
     }
 }
